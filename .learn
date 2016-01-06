@@ -1,8 +1,8 @@
 tags:
-  - devise
+  - cancan
   - rails
-  - engine
+  - authorization
 languages:
   - Ruby
 resources:
-  - https://github.com/plataformatec/devise
+  - https://github.com/ryanb/cancan

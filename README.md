@@ -34,10 +34,8 @@ When we create a new note, we'll want a form that takes in a comma seperated lis
 
 4. Create controllers. We'll need a `SessionsController`, a `UsersController`, and a `NotesController`. `UsersController` just needs a `create` route. `NotesController` should have the full CRUD suite.  Your `SessionsController` will be logging in and out users using the principles we learned earlier in this unit (but we won't use a password only a username).  
 
-5. Some views have been created for you. You should now be able to see your app at work.
-
-6. Add [CanCanCan] to your Gemfile. 
-7. Generate a skeleton `Ability` model with `rails g cancan:ability`. Write rules in the `Ability` model. If you need help on composing rules, [the documentation here][defining_abilities] is good.
+5. Add [CanCanCan] to your Gemfile. 
+6. Generate a skeleton `Ability` model with `rails g cancan:ability`. Write rules in the `Ability` model. If you need help on composing rules, [the documentation here][defining_abilities] is good.
 
 The rules are a little bit tricky because you have to look through an association to figure out if a user can read a note. You'll want to use a block condition, like this:
 

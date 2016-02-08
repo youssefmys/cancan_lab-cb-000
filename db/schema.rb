@@ -38,4 +38,5 @@ ActiveRecord::Schema.define(version: 20151213020228) do
   add_index "viewers", ["note_id"], name: "index_viewers_on_note_id"
   add_index "viewers", ["user_id"], name: "index_viewers_on_user_id"
 
+
 end

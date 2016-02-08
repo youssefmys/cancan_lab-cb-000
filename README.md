@@ -16,9 +16,9 @@ We're going to learn how to integrate [CanCanCan] into a Rails application. Our 
 
 We could give our users passwords quite easily with `has_secure_password`. However that would make it a lot more annoying to develop this app! For now, we'll just have usernames, and we'll let anyone sign in as someone else only using their name. This will make it easy to switch between accounts and test our authorization scheme.
 
-Create a `Note` model. `Note`s have `content`, and a `user`, their creator.
+2. Create a `Note` model. `Note`s have `content`, and a `user`, their creator.
 
-Create a `Viewer` model. `viewers` is a join between `notes` and and `users`. An entry in the `Viewer`s table means that `user` can view that `note`. 
+3. Create a `Viewer` model. `viewers` is a join between `notes` and `users`. An entry in the `Viewer`s table means that `user` can view that `note`. 
 
 Hint: There are a few ways to set up the relationship between `Note`s and `User`s. Here's what the tests expect:
 
@@ -30,13 +30,12 @@ Hint: There are a few ways to set up the relationship between `Note`s and `User`
     has_many :viewers
     has_many :readers, through: :viewers, source: :user
 
-Your `Note` model will need `visible_to` and `visible_to=` methods, which take a comma-separated list of user names, and turns that list into the `Note`'s `viewers` relation. There are tests for this; ensure they pass.
+When we create a new note, we'll want a form that takes in a comma seperated list of usernames which represent who that note is visible to.  We'll use utility methods on the note model which should know how to create the relationship between a note and its viewers.  These readers and writers will be called `visible_to` and `visible_to`.  You should be able to use the same principles of mass assignment and "accepts_nested_attributes" to accomplish this.  Use the tests as your guide.
 
-Create controllers. We'll need a `SessionsController`, a `UsersController`, and a `NotesController`. `UsersController` just needs a `create` route. `NotesController` should have the full CRUD suite.
+4. Create controllers. We'll need a `SessionsController`, a `UsersController`, and a `NotesController`. `UsersController` just needs a `create` route. `NotesController` should have the full CRUD suite.  Your `SessionsController` will be logging in and out users using the principles we learned earlier in this unit (but we won't use a password only a username).  
 
-Some views have been created for you. You should now be able to see your app at work.
-
-Now add [`cancan`][CanCan] to your Gemfile. `bundle`, then you can generate a skeleton `Ability` model with `rails g cancan:ability`. Write rules in the `Ability` model. If you need help on composing rules, [the documentation here][defining_abilities] is good.
+5. Add [CanCanCan] to your Gemfile. 
+6. Generate a skeleton `Ability` model with `rails g cancan:ability`. Write rules in the `Ability` model. If you need help on composing rules, [the documentation here][defining_abilities] is good.
 
 The rules are a little bit tricky because you have to look through an association to figure out if a user can read a note. You'll want to use a block condition, like this:
 
@@ -48,5 +47,11 @@ If your ActiveRecord relationships have been set up right, this should be fine.
 
 Now, go through the remaining tests and ensure they pass. To pass the controller tests, make calls to `authorize!` or `load_and_authorize_resource` in your `NotesController`.
 
-[CanCan]: https://github.com/ryanb/cancan
-[defining_abilities]: https://github.com/ryanb/cancan/wiki/defining-abilities
+
+    can :read, Note do |note|
+      # TODO
+    end
+
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/cancan_lab'>Cancan Lab</a> on Learn.co and start learning to code for free.</p>
+>>>>>>> master

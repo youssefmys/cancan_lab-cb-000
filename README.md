@@ -18,7 +18,7 @@ We could give our users passwords quite easily with `has_secure_password`. Howev
 
 2. Create a `Note` model. `Note`s have `content`, and a `user`, their creator.
 
-3. Create a `Viewer` model. `viewers` is a join between `notes` and and `users`. An entry in the `Viewer`s table means that `user` can view that `note`. 
+3. Create a `Viewer` model. `viewers` is a join between `notes` and `users`. An entry in the `Viewer`s table means that `user` can view that `note`. 
 
 Hint: There are a few ways to set up the relationship between `Note`s and `User`s. Here's what the tests expect:
 
@@ -53,3 +53,5 @@ Now, go through the remaining tests and ensure they pass. To pass the controller
     can :read, Note do |note|
       # TODO
     end
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/cancan_lab'>Cancan Lab</a> on Learn.co and start learning to code for free.</p>

@@ -30,7 +30,7 @@ Hint: There are a few ways to set up the relationship between `Note`s and `User`
     has_many :viewers
     has_many :readers, through: :viewers, source: :user
 
-When we create a new note, we'll want a form that takes in a comma seperated list of usernames which represent who that note is visible to.  We'll use utility methods on the note model which should know how to create the relationship between a note and its viewers.  These readers and writers will be called `visible_to` and `visible_to`.  You should be able to use the same principles of mass assignment and "accepts_nested_attributes" to accomplish this.  Use the tests as your guide.
+When we create a new note, we'll want a form that takes in a comma seperated list of usernames which represent who that note is visible to.  We'll use utility methods on the note model which should know how to create the relationship between a note and its viewers.  These readers and writers will be called `visible_to` and `visible_to=`.  You should be able to use the same principles of mass assignment and "accepts_nested_attributes" to accomplish this.  Use the tests as your guide.
 
 4. Create controllers. We'll need a `SessionsController`, a `UsersController`, and a `NotesController`. `UsersController` just needs a `create` route. `NotesController` should have the full CRUD suite.  Your `SessionsController` will be logging in and out users using the principles we learned earlier in this unit (but we won't use a password only a username).  
 

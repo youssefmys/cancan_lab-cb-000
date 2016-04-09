@@ -54,4 +54,7 @@ Now, go through the remaining tests and ensure they pass. To pass the controller
       # TODO
     end
 
+## Resources
+[Sitepoint - CanCanCan: The Rails Authorization Dance](http://www.sitepoint.com/cancancan-rails-authorization-dance/)
+
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/cancan_lab'>Cancan Lab</a> on Learn.co and start learning to code for free.</p>
